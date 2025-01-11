@@ -2,7 +2,7 @@
 export default $config({
   app(input) {
     return {
-      name: "nuxflare-auth",
+      name: "nuxmono",
       removal: input?.stage === "production" ? "retain" : "remove",
       protect: ["production"].includes(input?.stage),
       home: "cloudflare",
