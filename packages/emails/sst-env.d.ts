@@ -2,43 +2,43 @@
 /* tslint:disable */
 /* eslint-disable */
 /* deno-fmt-ignore-file */
-import "sst"
-export {}
+import "sst";
+export {};
 declare module "sst" {
   export interface Resource {
-    "CloudflareAuth": {
-      "type": "sst.cloudflare.Worker"
-      "url": string
-    }
-    "CloudflareAuthKV": {
-      "type": "sst.cloudflare.Kv"
-    }
-    "Emails": {
-      "type": "sst.cloudflare.Worker"
-    }
-    "GithubClientID": {
-      "type": "sst.sst.Secret"
-      "value": string
-    }
-    "GithubClientSecret": {
-      "type": "sst.sst.Secret"
-      "value": string
-    }
-    "GoogleClientID": {
-      "type": "sst.sst.Secret"
-      "value": string
-    }
-    "GoogleClientSecret": {
-      "type": "sst.sst.Secret"
-      "value": string
-    }
-    "ResendApiKey": {
-      "type": "sst.sst.Secret"
-      "value": string
-    }
-    "Static": {
-      "type": "sst.cloudflare.StaticSite"
-      "url": string
-    }
+    CloudflareAuth: {
+      type: "sst.cloudflare.Worker";
+      url: string;
+    };
+    CloudflareAuthKV: {
+      type: "sst.cloudflare.Kv";
+    };
+    Emails: {
+      type: "sst.cloudflare.Worker";
+    };
+    GithubClientID: {
+      type: "sst.sst.Secret";
+      value: string;
+    };
+    GithubClientSecret: {
+      type: "sst.sst.Secret";
+      value: string;
+    };
+    GoogleClientID: {
+      type: "sst.sst.Secret";
+      value: string;
+    };
+    GoogleClientSecret: {
+      type: "sst.sst.Secret";
+      value: string;
+    };
+    ResendApiKey: {
+      type: "sst.sst.Secret";
+      value: string;
+    };
+    Static: {
+      type: "sst.cloudflare.StaticSite";
+      url: string;
+    };
   }
 }

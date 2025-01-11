@@ -41,8 +41,8 @@
               state === 'code'
                 ? 'verify'
                 : data.password
-                  ? 'authorize'
-                  : 'request'
+                ? 'authorize'
+                : 'request'
             "
           />
 
@@ -96,8 +96,8 @@
               state === "code"
                 ? "Verify Code"
                 : data.password
-                  ? "Sign In"
-                  : "Send Code"
+                ? "Sign In"
+                : "Send Code"
             }}
           </UButton>
         </UForm>
@@ -176,7 +176,7 @@ const ERROR_MESSAGES = {
 } as const;
 
 const errorMessage = ref(
-  err ? (ERROR_MESSAGES[err] ?? "Something went wrong") : "",
+  err ? ERROR_MESSAGES[err] ?? "Something went wrong" : "",
 );
 
 const signIn = (e: Event) => {

@@ -194,9 +194,8 @@ export default {
                   },
                 },
               )) as any[];
-              data.email = (
-                emails.find((email) => email.primary) || emails[0]
-              )?.email;
+              data.email = (emails.find((email) => email.primary) || emails[0])
+                ?.email;
             }
             return {
               email: data.email as string,
