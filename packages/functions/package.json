@@ -1,0 +1,18 @@
+{
+  "name": "@nuxflare-auth/functions",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    "./subjects": "./src/subjects.ts"
+  },
+  "dependencies": {
+    "@cloudflare/workers-types": "^4.20241230.0",
+    "@nuxflare-auth/emails": "*",
+    "@openauthjs/openauth": "^0.3.5",
+    "@paralleldrive/cuid2": "^2.2.2",
+    "ofetch": "^1.4.1",
+    "resend": "^4.0.1",
+    "sst": "3.5.3",
+    "valibot": "1.0.0-beta.9"
+  }
+}

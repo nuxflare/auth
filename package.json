@@ -1,0 +1,14 @@
+{
+  "name": "nuxflare-auth",
+  "version": "0.0.0",
+  "scripts": {},
+  "devDependencies": {
+    "@tsconfig/node22": "^22",
+    "prettier": "^3.4.2",
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "sst": "3.5.3"
+  },
+  "packageManager": "pnpm@9.15.1"
+}

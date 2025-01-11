@@ -1,0 +1,20 @@
+{
+  "name": "@nuxflare-auth/emails",
+  "type": "module",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "email dev"
+  },
+  "exports": {
+    ".": "./index.ts"
+  },
+  "devDependencies": {
+    "react-email": "3.0.4"
+  },
+  "dependencies": {
+    "@react-email/components": "^0.0.31",
+    "@types/react": "^19.0.2",
+    "react": "^19.0.0",
+    "react-dom": "19.0.0"
+  }
+}
