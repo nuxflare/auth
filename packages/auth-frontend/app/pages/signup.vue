@@ -158,7 +158,7 @@ const ERROR_MESSAGES = {
 } as const;
 
 const errorMessage = ref(
-  err ? ERROR_MESSAGES[err] ?? "Something went wrong" : "",
+  err ? (ERROR_MESSAGES[err] ?? "Something went wrong") : "",
 );
 
 const signUp = (e: Event) => {

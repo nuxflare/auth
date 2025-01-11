@@ -10,6 +10,7 @@
     "@nuxflare-auth/emails": "*",
     "@openauthjs/openauth": "^0.3.5",
     "@paralleldrive/cuid2": "^2.2.2",
+    "hono": "^4.6.16",
     "ofetch": "^1.4.1",
     "resend": "^4.0.1",
     "sst": "3.5.3",

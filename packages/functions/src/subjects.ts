@@ -1,12 +1,23 @@
-import { unknown, array, object, string, InferOutput } from "valibot";
+import {
+  unknown,
+  array,
+  object,
+  string,
+  InferOutput,
+  intersect,
+} from "valibot";
 import { createSubjects } from "@openauthjs/openauth/subject";
 
-export const subjects = createSubjects({
-  user: object({
-    id: string(),
-    email: string(),
-    name: string(),
-    image: string(),
+const baseUser = object({
+  id: string(),
+  email: string(),
+  name: string(),
+  image: string(),
+});
+
+const fullUser = intersect([
+  baseUser,
+  object({
     createdAt: string(),
     updatedAt: string(),
     accounts: array(
@@ -17,6 +28,12 @@ export const subjects = createSubjects({
       }),
     ),
   }),
+]);
+
+export const subjects = createSubjects({
+  user: baseUser,
 });
 
 export type SubjectUser = InferOutput<typeof subjects.user>;
+
+export type FullUser = InferOutput<typeof fullUser>;

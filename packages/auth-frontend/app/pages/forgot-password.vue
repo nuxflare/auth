@@ -9,8 +9,8 @@
             state === "code"
               ? "Enter the verification code sent to your email."
               : state === "update"
-              ? "Enter your new password."
-              : "Enter your email to reset your password."
+                ? "Enter your new password."
+                : "Enter your email to reset your password."
           }}</span>
         </div>
 
@@ -44,8 +44,8 @@
               state === 'code'
                 ? 'verify'
                 : state === 'update'
-                ? 'update'
-                : 'code'
+                  ? 'update'
+                  : 'code'
             "
           />
 
@@ -89,8 +89,8 @@
               state === "code"
                 ? "Verify Code"
                 : state === "update"
-                ? "Update Password"
-                : "Send Code"
+                  ? "Update Password"
+                  : "Send Code"
             }}
           </UButton>
         </UForm>

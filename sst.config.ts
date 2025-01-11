@@ -41,7 +41,7 @@ export default $config({
           }
         : {}),
       environment: {
-        ...($dev ? { DEV_URL: "http://localhost:3000" } : {}),
+        ...($dev ? { DEV_URL: "http://localhost:3001" } : {}),
         FROM_EMAIL: fromEmail,
       },
     });

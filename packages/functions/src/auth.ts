@@ -1,10 +1,6 @@
 import { issuer } from "@openauthjs/openauth";
+import { createClient } from "@openauthjs/openauth/client";
 import { CloudflareStorage } from "@openauthjs/openauth/storage/cloudflare";
-import type {
-  Service,
-  ExecutionContext,
-  KVNamespace,
-} from "@cloudflare/workers-types";
 import { PasswordProvider } from "@openauthjs/openauth/provider/password";
 import { CodeProvider } from "@openauthjs/openauth/provider/code";
 import { GithubProvider } from "@openauthjs/openauth/provider/github";
@@ -13,8 +9,25 @@ import { ofetch } from "ofetch";
 import { createId } from "@paralleldrive/cuid2";
 import { Resource } from "sst/resource";
 import { subjects } from "./subjects";
-import type { SubjectUser } from "./subjects";
+import { createMiddleware } from "hono/factory";
+import type {
+  Service,
+  ExecutionContext,
+  KVNamespace,
+} from "@cloudflare/workers-types";
+import type { FullUser, SubjectUser } from "./subjects";
 import type { SendEmailType } from "./emails";
+
+let _clients: Record<string, ReturnType<typeof createClient>> = {};
+const getClient = (iss: string, hono: ReturnType<typeof issuer>) => {
+  if (_clients[iss]) return _clients[iss];
+  return createClient({
+    issuer: iss,
+    clientID: "same",
+    // @ts-expect-error passing arguments like this isn't typesafe
+    fetch: async (...args) => await hono.request(...args),
+  });
+};
 
 let fromEmail = "";
 
@@ -127,7 +140,6 @@ export default {
             if (devUrl)
               redirect.searchParams.set("origin", new URL(req.url).origin);
             const email = form?.get("email") || (state as any)?.claims?.email;
-            console.log("state", state);
             if (email) redirect.searchParams.set("email", email);
             if (state?.type) redirect.searchParams.set("state", state?.type);
             if (err?.type) redirect.searchParams.set("err", err?.type);
@@ -194,8 +206,9 @@ export default {
                   },
                 },
               )) as any[];
-              data.email = (emails.find((email) => email.primary) || emails[0])
-                ?.email;
+              data.email = (
+                emails.find((email) => email.primary) || emails[0]
+              )?.email;
             }
             return {
               email: data.email as string,
@@ -213,7 +226,7 @@ export default {
           const existing = (await storage.get([
             "users",
             userObject.email,
-          ])) as SubjectUser;
+          ])) as FullUser;
           let user;
           if (existing) {
             user = existing;
@@ -254,19 +267,46 @@ export default {
             });
           }
           await storage.set(["users", user.email], user);
-          return ctx.subject("user", user);
+          return ctx.subject("user", {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            image: user.image,
+          });
         } catch (err) {
           console.error("err in success", err);
           throw new Error("Something went wrong");
         }
       },
     });
+
+    const authMiddleware = createMiddleware(async (c, next) => {
+      const client = getClient(new URL(c.req.url).origin, hono);
+      const token =
+        c.req.header("Authorization")?.match(/^Bearer\s+(.+)$/)?.[1] || "";
+      const verified = await client.verify(subjects, token);
+      if (!verified.err) {
+        c.set("subject", verified.subject.properties);
+        return await next();
+      }
+      return c.json({ message: "Unauthorized" }, 401);
+    });
+
+    hono.get("/user", authMiddleware as any, async (c) => {
+      const user = await storage.get([
+        "users",
+        (c.get("subject" as any) as SubjectUser).email,
+      ]);
+      return c.json(user);
+    });
+
     hono.get("/*", async (c) => {
       const res: Response = await (
         (Resource as any).StaticRouter as Service
       ).fetch(c.req.raw);
       return res;
     });
+
     return hono.fetch(request, env, ctx);
   },
 };
