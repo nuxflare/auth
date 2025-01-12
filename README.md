@@ -6,7 +6,7 @@ A modern, lightweight, self-hosted auth server built with [Cloudflare](https://c
 
 Nuxflare Auth lets you add authentication to your apps without the headache. It's a monorepo that bundles everything you need:
 
-- A slick auth UI built with Nuxt 3 and [@nuxt/ui](packages/auth-frontend/package.json)
+- A slick auth UI built with Nuxt 3 and [@nuxt/ui](https://ui.nuxt.com)
 - Backend auth magic running on Cloudflare Workers
 - A ready-to-use example so you can see how it all fits together
 
