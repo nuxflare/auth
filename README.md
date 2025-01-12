@@ -1,3 +1,5 @@
+![Nuxflare Auth Login Screen](./images/demo.png)
+
 # Nuxflare Auth
 
 A modern, lightweight, self-hosted auth server built with [Cloudflare](https://cloudflare.com), [Nuxt](https://nuxt.com), and [OpenAuth.js](https://openauth.js.org/).
