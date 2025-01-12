@@ -52,7 +52,7 @@ Before getting started, you'll need:
 
 2. **Create and Configure API Token:**
 
-   a. Create a Cloudflare API token with the required permissions using [this link](https://dash.cloudflare.com/profile/api-tokens?permissionGroupKeys=%5B%7B%22key%22:%22ai%22,%22type%22:%22edit%22%7D,%7B%22key%22:%22vectorize%22,%22type%22:%22edit%22%7D,%7B%22key%22:%22d1%22,%22type%22:%22edit%22%7D,%7B%22key%22:%22workers_r2%22,%22type%22:%22edit%22%7D,%7B%22key%22:%22workers_kv_storage%22,%22type%22:%22edit%22%7D,%7B%22key%22:%22workers_scripts%22,%22type%22:%22edit%22%7D,%7B%22key%22:%22memberships%22,%22type%22:%22read%22%7D,%7B%22key%22:%22user_details%22,%22type%22:%22read%22%7D%5D&name=Nuxflare).\
+   a. Create a Cloudflare API token with the required permissions using [this link](https://dash.cloudflare.com/profile/api-tokens?permissionGroupKeys=%5B%7B%22key%22:%22workers_r2%22,%22type%22:%22edit%22%7D,%7B%22key%22:%22workers_kv_storage%22,%22type%22:%22edit%22%7D,%7B%22key%22:%22workers_scripts%22,%22type%22:%22edit%22%7D,%7B%22key%22:%22memberships%22,%22type%22:%22read%22%7D,%7B%22key%22:%22user_details%22,%22type%22:%22read%22%7D%5D&name=Nuxflare%20Auth).\
    b. Set the `CLOUDFLARE_API_TOKEN` environment variable:
 
    ```bash
