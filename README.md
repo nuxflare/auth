@@ -72,15 +72,24 @@ Before getting started, you'll need:
    pnpm sst secret set ResendApiKey your_resend_api_key
    ```
 
-4. Start local development:
+4. Configure your `fromEmail` in `sst.config.ts`:
+
+   ```typescript
+   async run() {
+     const fromEmail = "hi@nuxflare.com";
+     // ...
+   }
+   ```
+
+5. Start local development:
 
    ```bash
    pnpm dev
    ```
 
-5. Deploy to production:
+6. Deploy to production:
    ```bash
-   pnpm sst deploy --stage prod
+   pnpm sst deploy --stage production
    ```
 
 ## Architecture

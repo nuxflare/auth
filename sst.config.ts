@@ -10,7 +10,7 @@ export default $config({
     };
   },
   async run() {
-    const fromEmail = "hi@saas-boilerplate.dev";
+    const fromEmail = "hi@nuxflare.com";
     const resendApiKey = new sst.Secret("ResendApiKey");
     const clientSecrets = [
       new sst.Secret("GoogleClientID"),
@@ -35,7 +35,7 @@ export default $config({
       handler: "packages/functions/src/auth.ts",
       link: [kv, emails, staticSite.nodes.router, ...clientSecrets],
       url: true,
-      ...($app.stage === "tanay"
+      ...($app.stage === "production"
         ? {
             domain: "authdemo.nuxflare.com",
           }
