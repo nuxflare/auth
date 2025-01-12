@@ -12,13 +12,13 @@ Nuxflare Auth lets you add authentication to your apps without the headache. It'
 
 ## Features
 
-- 🔒Complete authentication UI including:
+- 🔒 Complete authentication UI including:
   - Code-based login
   - Password-based login
-  - Password recovery flow
+  - Forgot password flow
   - User registration
 - 🔑 OAuth2 authentication with GitHub and Google (easily add more providers)
-- ✉️ Email support through Resend
+- ✉️ Emails using Resend (or use any other provider)
 - ⚡ Lightning-fast, powered by Cloudflare's edge network
 
 ## Project Layout
