@@ -6,7 +6,6 @@ export default $config({
       removal: input?.stage === "production" ? "retain" : "remove",
       protect: ["production"].includes(input?.stage),
       home: "cloudflare",
-      providers: { aws: "6.66.2" },
     };
   },
   async run() {
@@ -37,8 +36,8 @@ export default $config({
       url: true,
       ...($app.stage === "production"
         ? {
-            domain: "authdemo.nuxflare.com",
-          }
+          domain: "authdemo.nuxflare.com",
+        }
         : {}),
       environment: {
         ...($dev ? { DEV_URL: "http://localhost:3001" } : {}),
